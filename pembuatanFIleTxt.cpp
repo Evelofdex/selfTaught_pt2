@@ -13,12 +13,19 @@ class textFileMaker{
     void setText(string t){ text = t; }
 
     void tambahFile(){
-        cout << "Masukan nama file yg akan dibuat ntar(tanpa spasi)\n";
+        //cek file ada brp sat ini
+        cout << "\nfile saat ini ada: ";
+        if (listNamaFile.empty()) //klo kosong kasih angka nol
+            cout << "0\n";
+        else 
+            listNamaFile.size(); // klo ada isi kasih tau isiny
+
+        cout << "\nMasukan nama file yg akan dibuat ntar(tanpa spasi)\n";
         cout << "-: ";
         cin >> namaFile;
         //cek nama file duplikat
         if (!listNamaFile.empty()){
-            for (int i = 0; i <= listNamaFile.size(); i++){
+            for (int i = 0; i < listNamaFile.size(); i++){
                 if (namaFile == listNamaFile.at(i)){
                     cout << "File dengan nama '" << listNamaFile.at(i) << "' sudah ada/dah dibuat sebelumnya\n";
                     cout << "Gunakan nama lain\n\n";
@@ -30,7 +37,7 @@ class textFileMaker{
         ofstream file("folderFileText\\" + namaFile + ".txt");
         //masukin nama file kedalam list
         listNamaFile.push_back(namaFile);
-        cout << "text file dengan nama '" << namaFile << "' telah dibuat!\n";
+        cout << "\ntext file dengan nama '" << namaFile << "' telah dibuat!\n";
         //di close, karna pembuatan file dah beres
         file.close();
     }
@@ -38,7 +45,23 @@ class textFileMaker{
 
     }
     void outputText(){
+        bool isNotFound = false; //buat cek klo file ny ketemu apa gk
 
+        if (listNamaFile.empty()){
+            cout << "\nblm ada file yg dibuat, silahkan buat dulu\n";
+            return;
+        }
+        
+        cout << "\nMasukan nama file yg ingin di output-kan isinya(tanpa spasi)\n";
+        cout << "-: ";
+        cin >> namaFile;
+
+        for (int i = 0; i < listNamaFile.size(); i++){
+            
+        }
+
+
+        ifstream outputFile("folderFileText\\" + namaFile + ".txt");
     }
     void listFile(){
 
